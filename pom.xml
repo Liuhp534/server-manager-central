@@ -10,6 +10,7 @@
   <modules>
     <module>data-structure</module>
       <module>jdk-server</module>
+      <module>server-demo</module>
   </modules>
   <packaging>pom</packaging>
   <name>server-manager-central</name>
