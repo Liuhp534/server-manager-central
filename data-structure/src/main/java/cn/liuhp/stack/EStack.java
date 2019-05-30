@@ -124,7 +124,42 @@ public class EStack<E> {
         return e;
     }
 
+    @Override
+    public String toString() {
+        if (this.elements == null) {
+            return "[]";
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        Object temp = null;
+        for (int i = 0; i < size; i ++) {
+            temp = this.elements[i];
+            sb.append(temp.toString().length() == 1 ? ("0" + temp.toString()) : temp.toString());
+            if (i == (size - 1)) {
+                sb.append("]");
+            } else {
+                sb.append(",");
+            }
+        }
+        return sb.toString();
+    }
 
+    public Set<String> getH() {
+        Set<String> temp = new LinkedHashSet<>();
+        for (int i = 0; i < size; i ++) {
+            temp.add(this.elements[i].toString().length() == 1 ? ("0" + this.elements[i].toString()) : this.elements[i].toString());
+        }
+        return temp;
+    }
 
-
+    public Set<String> getT(Set<String> allSet) {
+        Set<String> temp = new LinkedHashSet<>();
+        Set<String> hSet = this.getH();
+        for (String str : allSet) {
+            if (!hSet.contains(str)) {
+                temp.add(str);
+            }
+        }
+        return temp;
+    }
 }
