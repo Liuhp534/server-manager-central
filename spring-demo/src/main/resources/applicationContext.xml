@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--生产bean对象，通过无参数的构造函数-->
+    <bean id="helloSpring" class="cn.liuhp.HelloSpring">
+        <property name="name" value="liuhp">
+        </property>
+    </bean>
+
+    <!--生产bean通过有参数的构造函数，这个时候没有无参数的构造函数-->
+    <bean id="car1" class="cn.liuhp.Car">
+        <constructor-arg name="carName" value="BWM" ></constructor-arg>
+        <constructor-arg name="price" value="1000" ></constructor-arg>
+    </bean>
+
+    <!--生产bean通过有参数的构造函数，这个时候没有无参数的构造函数-->
+    <bean id="car2" class="cn.liuhp.Car">
+        <constructor-arg name="carName"  >
+            <value><![CDATA[<BTW>]]></value><!--特殊字符需要这样使用-->
+        </constructor-arg>
+        <constructor-arg name="maxSpeed" value="1000" ></constructor-arg>
+    </bean>
+
+    <bean id="person" class="cn.liuhp.Person">
+        <property name="name" value="john"></property><!--这边需要set方法，不管修饰符是否public，需要看看反射的代码-->
+        <property name="car" ref="car1"></property><!--依赖其他bean-->
+    </bean>
+</beans>

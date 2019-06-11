@@ -12,6 +12,7 @@
       <module>jdk-server</module>
       <module>server-demo</module>
       <module>java-utils-server</module>
+      <module>spring-demo</module>
   </modules>
   <packaging>pom</packaging>
   <name>server-manager-central</name>
