@@ -21,11 +21,18 @@
     </properties>
 
     <dependencies>
+        <!--junit-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.12</version>
             <scope>test</scope>
+        </dependency>
+        <!--spring test-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>4.3.4.RELEASE</version>
         </dependency>
 
         <!--有这个jar就可以在new中找到xml这个创建spring 的xml文件了-->
@@ -33,6 +40,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+        <!--2019年6月13日 aspect切面需要用到的-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.8.9</version>
         </dependency>
 
         <!--<dependency>
