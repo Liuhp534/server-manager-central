@@ -45,7 +45,8 @@ public class ReplaceStr {
         String placeholder = String.format("{{%s}}", "coverage");
         System.out.println(placeholder);
         String str = "确认保额{{coverage}}是否正确？";
-        System.out.println(str.replace(placeholder, "50万"));
+        System.out.println(str.replace(placeholder, "50万"));//这里的替换不会对原字符串修改，会返回一个新的，注意
+        System.out.println(str);
     }
 
 }
