@@ -1,12 +1,13 @@
 package cn.liuhp.aop;
 
+import cn.liuhp.aop.aspect.BlackDisc;
+import cn.liuhp.aop.aspect.BlackDiscAspect;
+import cn.liuhp.aop.aspect.TrackCounterConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import static org.junit.Assert.*;
 
 /*
 * 需要junit和spring-test包
@@ -38,12 +39,14 @@ public class TrackCounterConfigTest {
      * TrackCounterConfig 没有这个注解@EnableAspectJAutoProxy
      * 结果：正在准备播放 1
         播放第 1 首歌
-        正在准备播放 1
      * */
     @Test
     public void testAspect() {
         blackDisc.playSong(1);
-        blackDiscAspect.count(1);//aspect切面其实也是一个bean
+        blackDisc.playSong(2);
+        blackDisc.playSong(3);
+        //blackDiscAspect.count(1);//aspect切面其实也是一个bean
+        System.out.println(blackDiscAspect.getPlayCount());
     }
 
 }

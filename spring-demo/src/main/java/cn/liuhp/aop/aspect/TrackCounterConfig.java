@@ -1,4 +1,4 @@
-package cn.liuhp.aop;
+package cn.liuhp.aop.aspect;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

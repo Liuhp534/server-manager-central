@@ -1,4 +1,4 @@
-package cn.liuhp.aop;
+package cn.liuhp.aop.aspect;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -15,7 +15,7 @@ public class BlackDiscAspect {
 
     private int playCount = 0;
 
-    @Pointcut("execution(* cn.liuhp.aop.BlackDisc.playSong(int)) && args(number)")
+    @Pointcut("execution(* cn.liuhp.aop.aspect.BlackDisc.playSong(int)) && args(number)")
     public void trackPlayed(int number) {
 
     }
@@ -24,6 +24,10 @@ public class BlackDiscAspect {
     public void count(int number) {
         System.out.println("正在准备播放 " + number);
         playCount ++;
+    }
+
+    public int getPlayCount() {
+        return this.playCount;
     }
 
 }
