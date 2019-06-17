@@ -17,7 +17,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>4.2.6.RELEASE</spring.version>
+        <spring.version>4.3.8.RELEASE</spring.version>
     </properties>
 
     <dependencies>
@@ -32,7 +32,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>4.3.4.RELEASE</version>
+            <version>4.3.8.RELEASE</version>
         </dependency>
 
         <!--有这个jar就可以在new中找到xml这个创建spring 的xml文件了-->
