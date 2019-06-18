@@ -1,4 +1,4 @@
-package cn.liu.hui.peng.wheel; 
+package cn.liuhp.wheel.util;
 
 import java.util.Collection;
 import java.util.HashMap;

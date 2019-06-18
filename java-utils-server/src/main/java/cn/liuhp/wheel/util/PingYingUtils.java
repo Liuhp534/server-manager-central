@@ -1,4 +1,4 @@
-package cn.liu.hui.peng.wheel; 
+package cn.liuhp.wheel.util;
 
 import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
