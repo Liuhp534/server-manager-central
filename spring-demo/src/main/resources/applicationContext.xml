@@ -4,27 +4,46 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--生产bean对象，通过无参数的构造函数-->
-    <bean id="helloSpring" class="cn.liuhp.HelloSpring">
+    <bean id="helloSpring" class="cn.liuhp.ioc.bean.HelloSpring">
         <property name="name" value="liuhp">
         </property>
     </bean>
 
     <!--生产bean通过有参数的构造函数，这个时候没有无参数的构造函数-->
-    <bean id="car1" class="cn.liuhp.Car">
+    <bean id="car1" class="cn.liuhp.ioc.bean.Car">
         <constructor-arg name="carName" value="BWM" ></constructor-arg>
         <constructor-arg name="price" value="1000" ></constructor-arg>
     </bean>
 
     <!--生产bean通过有参数的构造函数，这个时候没有无参数的构造函数-->
-    <bean id="car2" class="cn.liuhp.Car">
+    <bean id="car2" class="cn.liuhp.ioc.bean.Car">
         <constructor-arg name="carName"  >
             <value><![CDATA[<BTW>]]></value><!--特殊字符需要这样使用-->
         </constructor-arg>
         <constructor-arg name="maxSpeed" value="1000" ></constructor-arg>
     </bean>
 
-    <bean id="person" class="cn.liuhp.Person">
+    <bean id="person" class="cn.liuhp.ioc.bean.Person">
         <property name="name" value="john"></property><!--这边需要set方法，不管修饰符是否public，需要看看反射的代码-->
-        <property name="car" ref="car1"></property><!--依赖其他bean-->
+        <!--<property name="car" ref="car1"></property>--><!--依赖其他bean-->
+        <property name="car" ref="customCarFacotryBean"></property><!--通过factorybean获取-->
+    </bean>
+
+    <!--factorybean不反回本身，返回工厂方法返回的具体对象-->
+    <bean id="carFactoryBean" class="cn.liuhp.ioc.bean.StaticFactoryBean" factory-method="initCar">
+    </bean>
+    <!--非静态的factorybean-->
+    <bean id="nonStaticFactoryBean" class="cn.liuhp.ioc.bean.NonStaticFactoryBean" >
+    </bean>
+    <bean id="carNonStaticFactoryBean" factory-bean="nonStaticFactoryBean" factory-method="initCar">
+    </bean>
+    <!--继承自factorybean的-->
+    <bean id="customCarFacotryBean" class="cn.liuhp.ioc.bean.CustomCarFactoryBean"></bean>
+
+    <!--第一阶段beanFactoryPostProcessor-->
+    <bean id="dog" class="cn.liuhp.ioc.prepare.Dog">
+        <property name="name" value="${dogName}"></property>
+        <property name="age" value="${dogAge}"></property>
+        <property name="birthday" value="1997-01-01"></property>
     </bean>
 </beans>

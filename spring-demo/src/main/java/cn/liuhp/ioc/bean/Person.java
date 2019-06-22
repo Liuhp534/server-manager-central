@@ -1,4 +1,4 @@
-package cn.liuhp;
+package cn.liuhp.ioc.bean;
 
 /**
  * @description: person bean

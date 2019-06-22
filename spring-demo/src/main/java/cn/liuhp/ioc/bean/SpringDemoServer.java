@@ -1,4 +1,4 @@
-package cn.liuhp;
+package cn.liuhp.ioc.bean;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
