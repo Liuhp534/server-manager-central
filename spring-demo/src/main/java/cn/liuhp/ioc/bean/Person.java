@@ -1,5 +1,8 @@
 package cn.liuhp.ioc.bean;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 /**
  * @description: person bean
  * @author: liuhp534
@@ -9,6 +12,8 @@ public class Person {
 
     public String name;
 
+    @Autowired
+    @Qualifier("car1")
     private Car car;
 
     @Override

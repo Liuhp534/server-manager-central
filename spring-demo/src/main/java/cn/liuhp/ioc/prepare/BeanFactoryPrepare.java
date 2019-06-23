@@ -1,7 +1,11 @@
 package cn.liuhp.ioc.prepare;
 
+import cn.liuhp.ioc.bean.Person;
+import org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor;
 import org.springframework.beans.factory.config.*;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 
 import java.beans.PropertyEditor;
@@ -18,7 +22,9 @@ public class BeanFactoryPrepare {
 
     public static void main(String[] args) {
         //test1();
-        test2();
+        //test2();
+        test3();
+        //test4();
     }
 
 
@@ -63,4 +69,22 @@ public class BeanFactoryPrepare {
         beanFactory.destroySingletons();
     }
 
+    /*通过autowired*/
+    private static void test3() {
+        ConfigurableListableBeanFactory beanFactory = new XmlBeanFactory(new ClassPathResource("beanFactory.xml"));
+
+        beanFactory.addBeanPostProcessor(new AutowiredAnnotationBeanPostProcessor());
+        beanFactory.getBean("car1");
+        Person person = (Person) beanFactory.getBean("person");
+        System.out.println(person);
+
+    }
+
+    /*通过autowired*/
+    private static void test4() {
+        ApplicationContext beanFactory = new ClassPathXmlApplicationContext("beanFactory.xml");
+        Person person = (Person) beanFactory.getBean("person");
+        System.out.println(person);
+
+    }
 }
