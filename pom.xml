@@ -14,6 +14,7 @@
       <module>java-utils-server</module>
       <module>spring-demo</module>
       <module>design-pattern</module>
+      <module>spring-mvc</module>
   </modules>
   <packaging>pom</packaging>
   <name>server-manager-central</name>
