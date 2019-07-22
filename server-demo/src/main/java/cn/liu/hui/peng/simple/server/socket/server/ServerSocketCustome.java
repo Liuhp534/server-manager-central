@@ -28,11 +28,13 @@ public class ServerSocketCustome {
     */
     private static void createServerSocket() {
         System.out.println("socket server start !");
+        //创建服务socket
+        ServerSocket serverSocket = null;
         try {
+            //创建服务socket
+            serverSocket = new ServerSocket(8080);
             int count = 1;
             while (true) {
-                //创建服务socket
-                ServerSocket serverSocket = new ServerSocket(8080);
                 //等待请求，阻塞的
                 Socket clientSocket = serverSocket.accept();
                 //接受数据
@@ -47,7 +49,7 @@ public class ServerSocketCustome {
                 reader.close();
                 writer.close();
                 clientSocket.close();
-                serverSocket.close();
+
                 count ++;
                 if (count > 10) {
                     break;
@@ -55,6 +57,11 @@ public class ServerSocketCustome {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                serverSocket.close();
+            } catch (IOException e) {
+            }
         }
         System.out.println("socket server end !");
     }
