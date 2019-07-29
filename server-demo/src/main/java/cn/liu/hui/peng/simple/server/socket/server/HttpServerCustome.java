@@ -120,7 +120,7 @@ public class HttpServerCustome {
                 StringBuilder sb = new StringBuilder();
                 sb.append("HTTP/1.1 200 OK" + System.lineSeparator())
                         .append("Content-Type:text/html;charset=UTF-8" + System.lineSeparator())
-                        //.append(System.lineSeparator())//如果没有这一行就不是一个http响应了，客户端应用程序（浏览器）解析会怎样：解析不出来
+                        .append(System.lineSeparator())//如果没有这一行就不是一个http响应了，客户端应用程序（浏览器）解析会怎样：解析不出来
                         .append("<html><head><title>显示报文</title></head><body>")
                         .append("显示的报文 : <br>");
                 for (String message : requestMessages) {
