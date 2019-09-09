@@ -1,6 +1,6 @@
 package cn.liuhp.collection;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @description: set有关的使用
@@ -14,4 +14,20 @@ public class SetDemo {
 
     }
 
+
+    /*给list去重*/
+    private void remove() {
+        List<Long> list = new ArrayList<>(Arrays.asList(1L, 1L, 2L));
+        Set<Long> s1 = new HashSet<Long>();
+        Iterator<Long> it = list.iterator();
+        Long temp = null;
+        while (it.hasNext()) {
+            temp = it.next();
+            if (s1.contains(temp)) {
+                it.remove();
+            }
+            s1.add(temp);
+        }
+        System.out.println(list);
+    }
 }
