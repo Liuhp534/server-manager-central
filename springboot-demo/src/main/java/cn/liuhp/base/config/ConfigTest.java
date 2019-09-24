@@ -9,10 +9,18 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "testConfig")
 @PropertySource("classpath:configTest.properties")
-@Data
+//@Data
 public class ConfigTest {
 
     private String name;
 
     private int age;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
