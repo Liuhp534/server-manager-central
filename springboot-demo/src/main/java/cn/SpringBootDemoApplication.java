@@ -1,5 +1,8 @@
 package cn;
 
+import org.apache.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,7 +13,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class SpringBootDemoApplication {
+
+    private static final Logger logger = LoggerFactory.getLogger(SpringBootDemoApplication.class);
+
+
     public static void main(String[] args) {
+        long start = System.currentTimeMillis();
+        //System.setProperty("spring.config.location", "classpath:conf/env/application.properties");
         SpringApplication.run(SpringBootDemoApplication.class, args);
+        logger.info("服务启动完成，用时={}", System.currentTimeMillis() - start);
     }
 }
