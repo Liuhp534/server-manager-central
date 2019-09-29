@@ -2,6 +2,7 @@ package cn.liuhp.core.controller;
 
 import cn.SpringBootDemoApplication;
 import cn.liuhp.base.config.ConfigTest;
+import cn.liuhp.base.config.ConstantConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class SpringBootDemoController {
     @RequestMapping(path = "springConfig")
     @ResponseBody
     public String springConfig() {
-        logger.info("springConfig调用。。。");
+        logger.info("springConfig调用。。。config.Max_Value={}", ConstantConfig.Max_Value);
         return configTest.toString();
     }
 }
