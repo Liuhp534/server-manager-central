@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -38,11 +39,16 @@ public class SpringBootDemoController {
     @ResponseBody
     public String springBootDemo(String param, HttpServletRequest request, HttpServletResponse response) {
         logger.info("session = {}", request.getSession().getId());//说明不会自己主动创建session
-        String host=request.getHeader("host");
+        request.getSession().setMaxInactiveInterval(5);//没有起作用
+        /*String host=request.getHeader("host");
         if(host.indexOf(":")>-1){
             host=host.split(":")[0];
         }
-        response.setHeader("host", host);
+        response.setHeader("host", host);*/
+        //添加cookies
+        Cookie ncookie = new Cookie("userName","我是大帅比");
+        ncookie.setMaxAge(5);//5秒，这个起作用了
+        response.addCookie(ncookie);
         return "hello springboot, " + param;
     }
 
