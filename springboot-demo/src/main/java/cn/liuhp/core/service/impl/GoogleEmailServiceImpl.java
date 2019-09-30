@@ -12,7 +12,7 @@ public class GoogleEmailServiceImpl implements EmailService {
     private static final Logger logger = LoggerFactory.getLogger(GoogleEmailServiceImpl.class);
 
     @Override
-    public void sendEmail() {
-        logger.info("Google send email。。。");
+    public void sendEmail(String content) {
+        logger.info(content + ", Google send email。。。");
     }
 }

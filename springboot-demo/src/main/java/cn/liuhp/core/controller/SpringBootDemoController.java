@@ -64,7 +64,7 @@ public class SpringBootDemoController {
     public String sendEmail(HttpServletRequest request, HttpServletResponse response) {
         logger.info("sendEmail");
         request.setAttribute("msg", "sendEmail success");
-        emailService.sendEmail();
+        emailService.sendEmail("sendEmail");
         return "success";
     }
 }

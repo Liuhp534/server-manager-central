@@ -12,7 +12,7 @@ public class DefaultEmailServiceImpl implements EmailService {
     private static final Logger logger = LoggerFactory.getLogger(DefaultEmailServiceImpl.class);
 
     @Override
-    public void sendEmail() {
+    public void sendEmail(String content) {
         logger.info("default send email。。。");
     }
 }
