@@ -1,5 +1,8 @@
 package cn.liuhp.core.controller;
 
+import cn.eventbus.EventBusCenter;
+import cn.eventbus.event.BaseEvent;
+import cn.eventbus.event.PersonEvent;
 import cn.liuhp.base.config.ConfigTest;
 import cn.liuhp.base.config.ConstantConfig;
 import cn.liuhp.core.service.EmailService;
@@ -71,6 +74,14 @@ public class SpringBootDemoController {
         logger.info("sendEmail");
         request.setAttribute("msg", "sendEmail success");
         emailService.sendEmail("sendEmail");
+        return "success";
+    }
+
+    @RequestMapping(path = "publishEventBus")
+    public String publishEventBus(HttpServletRequest request, HttpServletResponse response) {
+        PersonEvent personEvent = new PersonEvent();
+
+        EventBusCenter.post(personEvent);
         return "success";
     }
 }
