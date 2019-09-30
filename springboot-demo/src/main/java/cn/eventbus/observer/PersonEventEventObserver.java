@@ -13,6 +13,10 @@ public class PersonEventEventObserver extends BaseEventObserver<PersonEvent> {
 
     @Override
     public void handler(PersonEvent event) {
+        int i = 0;
         logger.info("PersonEventObserver...{}", event.getEventName());
+        if (i==0) {
+            throw new RuntimeException("人为抛出。，。");
+        }
     }
 }

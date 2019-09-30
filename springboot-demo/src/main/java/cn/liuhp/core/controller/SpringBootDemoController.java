@@ -2,6 +2,7 @@ package cn.liuhp.core.controller;
 
 import cn.eventbus.EventBusCenter;
 import cn.eventbus.event.BaseEvent;
+import cn.eventbus.event.DogEvent;
 import cn.eventbus.event.PersonEvent;
 import cn.liuhp.base.config.ConfigTest;
 import cn.liuhp.base.config.ConstantConfig;
@@ -80,8 +81,13 @@ public class SpringBootDemoController {
     @RequestMapping(path = "publishEventBus")
     public String publishEventBus(HttpServletRequest request, HttpServletResponse response) {
         PersonEvent personEvent = new PersonEvent();
-
+        DogEvent dogEvent = new DogEvent();
         EventBusCenter.post(personEvent);
+        EventBusCenter.post(dogEvent);
+        int i = 0;
+        if (i==0) {
+            throw new RuntimeException("人为抛出。，。");
+        }
         return "success";
     }
 }
