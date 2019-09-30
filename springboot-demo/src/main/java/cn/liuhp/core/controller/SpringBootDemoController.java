@@ -2,6 +2,7 @@ package cn.liuhp.core.controller;
 
 import cn.liuhp.base.config.ConfigTest;
 import cn.liuhp.base.config.ConstantConfig;
+import cn.liuhp.core.service.EmailService;
 import cn.liuhp.utils.SessionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +26,9 @@ public class SpringBootDemoController {
     //两种写法
     //private static final Logger logger = LoggerFactory.getLogger(SpringBootDemoController.class);
     private final Logger logger = LoggerFactory.getLogger(getClass());
+
+    @Autowired
+    private EmailService emailService;
 
     @Autowired
     private ConfigTest configTest;
@@ -54,5 +58,13 @@ public class SpringBootDemoController {
     public String springConfig() {
         logger.info("springConfig调用。。。config.Max_Value={}", ConstantConfig.Max_Value);
         return configTest.toString();
+    }
+
+    @RequestMapping(path = "sendEmail")
+    public String sendEmail(HttpServletRequest request, HttpServletResponse response) {
+        logger.info("sendEmail");
+        request.setAttribute("msg", "sendEmail success");
+        emailService.sendEmail();
+        return "success";
     }
 }
