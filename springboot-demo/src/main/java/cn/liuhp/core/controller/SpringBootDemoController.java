@@ -82,12 +82,12 @@ public class SpringBootDemoController {
     public String publishEventBus(HttpServletRequest request, HttpServletResponse response) {
         PersonEvent personEvent = new PersonEvent();
         DogEvent dogEvent = new DogEvent();
-        EventBusCenter.post(personEvent);
+        EventBusCenter.post(personEvent);//等待执行完成
         EventBusCenter.post(dogEvent);
         int i = 0;
-        if (i==0) {
+        /*if (i==0) {
             throw new RuntimeException("人为抛出。，。");
-        }
+        }*/
         return "success";
     }
 }
