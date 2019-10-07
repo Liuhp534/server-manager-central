@@ -51,6 +51,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring‐boot‐maven‐plugin</artifactId>
             </plugin>-->
+            <!--配置meta-inf文件，防止覆盖的jar包-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
