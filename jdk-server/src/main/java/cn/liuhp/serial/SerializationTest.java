@@ -7,7 +7,7 @@ import java.io.IOException;
 public class SerializationTest {
 
     public static void main(String[] args) {
-
+        //fun1();
         fun2();
 
     }

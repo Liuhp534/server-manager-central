@@ -8,6 +8,10 @@ import java.io.Serializable;
  * */
 public class Employee implements Serializable {
 
+    //这个值的作用仅仅是告知反序列化处理机制，新的类是相同的类的新版本，应该进行可能的反序列化处理
+    private static final long serialVersionUID = 5026275996690139003L;
+
+
     private String name;
 
     private int id;
@@ -16,9 +20,11 @@ public class Employee implements Serializable {
 
     private static int age;//静态变量的值也不会被序列化，因为他们是属于类而非对象的，经过实践的确不会序列化
 
+    private String password;
+
     @Override
     public String toString() {
-        return "Employee{name=" + name + ",id=" + id + ",salary=" + salary + ",age=" + age + "}";
+        return "Employee{name=" + name + ",id=" + id + ",salary=" + salary + ",age=" + age + ",password=" + password + "}";
     }
 
     public String getName() {
@@ -52,5 +58,13 @@ public class Employee implements Serializable {
 
     public static void setAge(int age) {
         Employee.age = age;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
