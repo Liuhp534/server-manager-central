@@ -7,11 +7,22 @@ import java.io.IOException;
 public class SerializationTest {
 
     public static void main(String[] args) {
+
+        fun2();
+
+    }
+
+
+    /*
+    * 序列化
+    * */
+    private static void fun1() {
         String fileName="employee.ser";
         Employee emp = new Employee();
         emp.setId(100);
         emp.setName("Pankaj");
         emp.setSalary(5000);
+        Employee.setAge(100);
 
         //serialize to file
         try {
@@ -20,7 +31,14 @@ public class SerializationTest {
             e.printStackTrace();
             return;
         }
+        System.out.println("emp Object::"+emp);
+    }
 
+    /*
+    * 反序列化
+    * */
+    private static void fun2() {
+        String fileName="employee.ser";
         Employee empNew = null;
         try {
             empNew = (Employee) SerializationUtils.deserialize(fileName);
@@ -28,7 +46,7 @@ public class SerializationTest {
             e.printStackTrace();
         }
 
-        System.out.println("emp Object::"+emp);
+
         System.out.println("empNew Object::"+empNew);
     }
 
