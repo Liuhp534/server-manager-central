@@ -22,8 +22,7 @@ public class SerializationTest {
         emp.setId(100);
         emp.setName("Pankaj");
         emp.setSalary(5000);
-        Employee.setAge(100);
-
+        emp.setValue("我是父类");
         //serialize to file
         try {
             SerializationUtils.serialize(emp, fileName);
