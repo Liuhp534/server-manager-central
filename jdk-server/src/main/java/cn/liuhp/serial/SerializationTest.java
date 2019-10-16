@@ -8,10 +8,43 @@ public class SerializationTest {
 
     public static void main(String[] args) {
         //fun1();
-        fun2();
-
+        //fun2();
+        //fun3();
+        fun4();
     }
 
+    /*
+    * 父类序列化子类没有
+    * */
+    private static void fun3() {
+        String fileName = "person.ser";
+        Person person = new Person();
+        person.setName("john");
+        person.setValue("我是父类");
+        try {
+            SerializationUtils.serialize(person, fileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+        System.out.println("person Object::"+person);
+    }
+
+    /*
+     * 反序列化
+     * */
+    private static void fun4() {
+        String fileName="person.ser";
+        Person personNew = null;
+        try {
+            personNew = (Person) SerializationUtils.deserialize(fileName);
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
+        }
+
+
+        System.out.println("personNew Object::"+personNew);
+    }
 
     /*
     * 序列化
