@@ -3,11 +3,12 @@ package cn.liuhp.serial;
 public class Person extends SubClassSerial {
 
 
-    private static final long serialVersionUID = 6544363425399344466L;
+    //private static final long serialVersionUID = 6544363425399344466L;
+    private static final long serialVersionUID = 1L;
 
     private String name;
 
-    private int age;
+    //private int age;
 
     @Override
     public String toString() {

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class SubClassSerial implements Serializable {
 
-    private static final long serialVersionUID = -4625535012041179847L;
+    //private static final long serialVersionUID = -4625535012041179847L;
 
     private String value;
 
