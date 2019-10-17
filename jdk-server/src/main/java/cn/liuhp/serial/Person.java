@@ -13,7 +13,7 @@ public class Person extends SubClassSerial {
     @Override
     public String toString() {
         return "Person{" +
-                "name=" + name + ", value=" + getValue() +"}";
+                "name=" + name + ", value=   " + getValue() +"}";
     }
 
     public String getName() {
