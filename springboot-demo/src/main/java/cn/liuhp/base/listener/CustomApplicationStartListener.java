@@ -46,7 +46,7 @@ public class CustomApplicationStartListener implements SpringApplicationRunListe
     @Override
     public void finished(ConfigurableApplicationContext context, Throwable exception) {
         logger.info("application finished listener...");
-        System.exit(-1);//发生不符合的情况，可以退出程序
+        //System.exit(-1);//发生不符合的情况，可以退出程序
     }
 
 
