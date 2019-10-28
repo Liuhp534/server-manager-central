@@ -16,6 +16,6 @@ public class SpringListenerTest implements ApplicationListener {
 
     @Override
     public void onApplicationEvent(ApplicationEvent event) {
-        logger.info("无泛型的springlistener。。。。。。{}", event.getClass());
+        logger.info("无泛型的springlistener。。。。。。  {}", event.getClass());
     }
 }
