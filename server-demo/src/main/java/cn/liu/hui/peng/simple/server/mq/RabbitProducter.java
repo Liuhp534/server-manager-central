@@ -1,4 +1,4 @@
-package cn.liu.hui.peng.simple.server;
+package cn.liu.hui.peng.simple.server.mq;
 
 import java.io.IOException;
 import java.util.Random;

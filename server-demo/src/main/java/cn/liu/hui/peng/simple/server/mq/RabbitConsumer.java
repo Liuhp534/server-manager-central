@@ -1,7 +1,6 @@
-package cn.liu.hui.peng.simple.server; 
+package cn.liu.hui.peng.simple.server.mq;
 
 import java.io.IOException;
-import java.util.concurrent.TimeoutException;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;

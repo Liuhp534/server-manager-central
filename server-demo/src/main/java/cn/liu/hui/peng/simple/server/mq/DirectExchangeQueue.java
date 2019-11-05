@@ -2,8 +2,6 @@ package cn.liu.hui.peng.simple.server.mq;
 
 import java.io.IOException;
 
-import cn.liu.hui.peng.simple.server.RabbitConnection;
-
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.Consumer;
