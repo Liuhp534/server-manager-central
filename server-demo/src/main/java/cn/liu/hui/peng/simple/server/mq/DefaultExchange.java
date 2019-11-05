@@ -37,13 +37,10 @@ public class DefaultExchange {
 
     static Map<String, Object> getHeaders() {
         Map<String, Object> headers = new HashMap<String, Object>();
-        headers.put("status", "00000");
-        headers.put("retreatNum", "181115094091117");
-        headers.put("command", "ins.api.cancelPolicy");
-        headers.put("statusText", "成功");
-        headers.put("companyId", "45");
-        headers.put("transNo", "20181114000751");
-        headers.put("productId", "354");
+        headers.put("status", "01");
+        headers.put("command", "ins.api.personCheckQuery");
+        headers.put("statusText", "预核保结果通知成功");
+        headers.put("transNo", "20191104029896");
         return headers;
     }
 
@@ -51,7 +48,7 @@ public class DefaultExchange {
      * 交换器发送数据
      */
     public static void createClient() {
-        String body = "[{\"auditWay\":0,\"companyId\":135,\"productId\":3898,\"resultDetail\":{\"availableMoney\":\"148000\",\"cancelAmount\":\"148000\",\"cancelDate\":\"2018-11-15 12:11:00\",\"insureNo\":\"20181114000751\",\"isHesitant\":1,\"orderNo\":\"1542194574117\",\"policyNo\":\"86110020180210001101\",\"refundNo\":\"HZ1542250808164\"},\"resultStatusCode\":\"success\",\"resultStatusMsg\":\"退保成功\"}]";
+        String body = "{\"companyId\":135,\"productId\":101971,\"auditWay\":4,\"resultDetail\":{\"transNo\":\"20191104029896\",\"noHealthPaper\":\"69D9BAAD5C9F40FB922E4AA4E7A4D189\",\"manualTransNo\":\"142661\",\"transDate\":\"2019-11-04T16:44:04.000+0800\",\"resultType\":1,\"resultDesc\":\"\",\"exceptDetailVos\":[{\"exceptContent\":\"\"}],\"expireDate\":\"2019-11-15T16:42:17.000+0800\"}}";
 
         Connection conn = RabbitConnection.createConnection();
         Channel channel = null;
@@ -61,7 +58,7 @@ public class DefaultExchange {
 
             final String uuid = UUID.randomUUID().toString();
             BasicProperties props = new BasicProperties().builder().correlationId(uuid).replyTo(queneName).headers(getHeaders()).build();
-            channel.basicPublish("", "rpc_liuhp_quene", props, body.getBytes("utf-8"));// 发送消息
+            channel.basicPublish("", "pluto_is[task.inscheduler]", props, body.getBytes("utf-8"));// 发送消息
             System.out.println("default exchange \"\" 发送消息。。。。");
             // 接受返回的结果
             // 方式一 queneingConsumer 很多的问题，这个暂时不研究
@@ -73,7 +70,7 @@ public class DefaultExchange {
              * System.out.println(new String(delivery.getBody())); } break; }
              */
             // 方式二 defaultConsumer
-            Consumer consumer = new DefaultConsumer(channel) {
+            /*Consumer consumer = new DefaultConsumer(channel) {
 
                 @Override
                 public void handleDelivery(String consumerTag, Envelope envelope, BasicProperties properties, byte[] body) throws IOException {
@@ -89,9 +86,9 @@ public class DefaultExchange {
                     }
                 }
             };
-            channel.basicConsume(queneName, true, consumer);
+            channel.basicConsume(queneName, true, consumer);*/
 
-            Thread.sleep(30000L);
+            Thread.sleep(1L);
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         } finally {
