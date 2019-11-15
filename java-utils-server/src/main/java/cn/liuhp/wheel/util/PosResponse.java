@@ -11,15 +11,9 @@ package cn.liuhp.wheel.util;
  * @author hz16092620
  * @date 2018年9月14日 下午4:59:40
  */
-public class Response<T> {
+public class PosResponse<T> {
 
-    public static void main(String[] args) {
-        Response response = new Response();
-        new ResponseBuilder().setResult(new Object()).build();
-        System.out.println(response.getResult());
-    }
-
-    private T result;
+    private Object result;//不用改成object也行，PosResponse这样写默认就是object
 
     private String errorMsg;
 
@@ -32,7 +26,7 @@ public class Response<T> {
      */
     public static class ResponseBuilder<T> {
 
-        private T result;
+        private Object result;
 
         private String errorMsg;
 
@@ -60,16 +54,16 @@ public class Response<T> {
             return this;
         }
 
-        public Response<T> build() {
-            return new Response<T>(result, errorMsg, status, success);
+        public PosResponse<T> build() {
+            return new PosResponse<T>(result, errorMsg, status, success);
         }
     }
 
-    private Response() {
+    private PosResponse() {
 
     }
 
-    private Response(T result, String errorMsg, String status, boolean success) {
+    private PosResponse(Object result, String errorMsg, String status, boolean success) {
         this.result = result;
         this.errorMsg = errorMsg;
         this.status = status;
@@ -77,7 +71,7 @@ public class Response<T> {
     }
 
     public T getResult() {
-        return result;
+        return (T) result;
     }
 
     public String getErrorMsg() {
@@ -92,12 +86,12 @@ public class Response<T> {
         return success;
     }
 
-    public static <T> Response<T> success() {
-        return new Response<T>();
+    public static <T> PosResponse<T> success() {
+        return new PosResponse<T>();
     }
 
-    public static <T> Response<T> fail(String status, String errorMsg) {
-        Response<T> fail = new Response<T>();
+    public static <T> PosResponse<T> fail(String status, String errorMsg) {
+        PosResponse<T> fail = new PosResponse<T>();
         fail.errorMsg = errorMsg;
         fail.status = status;
         fail.success = Boolean.FALSE;
