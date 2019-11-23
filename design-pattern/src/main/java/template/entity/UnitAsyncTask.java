@@ -20,7 +20,7 @@ public class UnitAsyncTask<T extends TaskDTO> implements Callable<Integer> {
         if (null != this.taskList) {
             for (T t : taskList) {
                 //TODO 执行具体任务
-                System.out.println("执行任务" + t.toString());
+                System.out.println(Thread.currentThread().getName() + ", 执行任务" + t.toString());
                 result ++;
             }
         }

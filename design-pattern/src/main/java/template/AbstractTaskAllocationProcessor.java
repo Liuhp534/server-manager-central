@@ -50,7 +50,7 @@ public abstract class AbstractTaskAllocationProcessor {
     protected void configTaskPageSize() {
         this.taskPageSize = 100;
     }
-    private final List<? extends UnitAsyncTask> distributeList(List<TaskDTO> taskDTOList) {
+    protected List<? extends UnitAsyncTask> distributeList(List<TaskDTO> taskDTOList) {
         List<UnitAsyncTask> taskHandlerList = null;
         UnitAsyncTask unitAsyncTask = null;
         try {
@@ -87,7 +87,7 @@ public abstract class AbstractTaskAllocationProcessor {
                 new LinkedBlockingQueue<Runnable>(1));
     }
 
-    private final List<Future<Integer>> submitHandlerList(List<? extends UnitAsyncTask> handlerList) {
+    protected List<Future<Integer>> submitHandlerList(List<? extends UnitAsyncTask> handlerList) {
         List<Future<Integer>> dealResultList = new ArrayList<>();
         try {
             for (Callable<Integer> handler : handlerList) {
@@ -106,7 +106,7 @@ public abstract class AbstractTaskAllocationProcessor {
         return Boolean.FALSE;
     }
 
-    private final int blockedGetResult(List<Future<Integer>> dealResult) {
+    protected int blockedGetResult(List<Future<Integer>> dealResult) {
         int result = 0;
         for (Future<Integer> integerFuture : dealResult) {
             try {
