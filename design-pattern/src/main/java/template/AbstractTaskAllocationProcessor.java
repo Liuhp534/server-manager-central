@@ -1,5 +1,6 @@
 package template;
 
+import template.entity.PlanTaskDTO;
 import template.entity.TaskDTO;
 import template.entity.UnitAsyncTask;
 
@@ -50,7 +51,8 @@ public abstract class AbstractTaskAllocationProcessor {
     protected void configTaskPageSize() {
         this.taskPageSize = 100;
     }
-    protected List<? extends UnitAsyncTask> distributeList(List<TaskDTO> taskDTOList) {
+    //参数定义？ extends T可以接收TaskDTO的子类型
+    protected List<? extends UnitAsyncTask> distributeList(List<? extends TaskDTO> taskDTOList) {
         List<UnitAsyncTask> taskHandlerList = null;
         UnitAsyncTask unitAsyncTask = null;
         try {

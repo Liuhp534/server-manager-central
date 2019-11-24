@@ -13,11 +13,14 @@ public class PlanTaskAllocationProcessor extends AbstractTaskAllocationProcessor
 
     public ThreadPoolExecutor threadPoolExecutor;
 
+    /*
+    * 特定类型的TaskDTO，扩展性好
+    * */
     @Override
     protected List<? extends TaskDTO> searchList() {
-        List<TaskDTO> taskDTOList = new ArrayList<>(1000);
+        List<PlanTaskDTO> taskDTOList = new ArrayList<>(1000);
         for (int i = 0; i < 1000; i ++) {
-            taskDTOList.add(new TaskDTO());
+            taskDTOList.add(new PlanTaskDTO());
         }
         return taskDTOList;
     }
