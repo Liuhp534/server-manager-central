@@ -22,9 +22,10 @@ public class MixOperation {
     public static void main(String[] args) {
         //m1();
         //m2();
-        m3();
+        //m3();
         //m4();
         //m5();
+        fun1();
     }
 
     private static void m6() {
@@ -134,5 +135,15 @@ public class MixOperation {
 
         l = (long) f;
         System.out.println(l);//精度丢失
+    }
+
+    /*
+    * 向上转型
+    * */
+    private static void fun1() {
+        long L1 = 100L;
+        int i1 = 100;
+        /*System.out.println((L1 + i1) instanceof Long);
+        System.out.println((i1) instanceof Integer);*/
     }
 }
