@@ -12,11 +12,27 @@ import java.util.concurrent.*;
 /*
 多线程任务处理器
  */
-public abstract class AbstractTaskAllocationProcessor {
+public abstract class AbstractTaskAllocationListener {
 
-    protected ThreadPoolExecutor threadPoolExecutor;
+    public ThreadPoolExecutor threadPoolExecutor;
 
-    protected int taskPageSize;
+    public int taskPageSize;
+
+    public ThreadPoolExecutor getThreadPoolExecutor() {
+        return threadPoolExecutor;
+    }
+
+    public void setThreadPoolExecutor(ThreadPoolExecutor threadPoolExecutor) {
+        this.threadPoolExecutor = threadPoolExecutor;
+    }
+
+    public int getTaskPageSize() {
+        return taskPageSize;
+    }
+
+    public void setTaskPageSize(int taskPageSize) {
+        this.taskPageSize = taskPageSize;
+    }
 
     public final void templateMethod() {//模板方法
         //步骤1，获取任务
@@ -43,6 +59,10 @@ public abstract class AbstractTaskAllocationProcessor {
         }
     }
 
+    protected void init(ThreadPoolExecutor _threadPoolExecutor, int _taskPageSize) {
+        this.threadPoolExecutor = _threadPoolExecutor;
+        this.taskPageSize = _taskPageSize;
+    }
 
     //步骤1，获取任务
     protected abstract List<? extends TaskDTO> searchList();
@@ -83,12 +103,7 @@ public abstract class AbstractTaskAllocationProcessor {
     }
 
     //步骤3，提交任务到线程池执行
-    protected void configHandlerThreadPool() {//钩子方法
-        //核心线程数2，最大线程数4，线程多久空闲销毁，工作队列
-        this.threadPoolExecutor = new ThreadPoolExecutor(1, 1, 60L, TimeUnit.SECONDS,
-                new LinkedBlockingQueue<Runnable>(1));
-    }
-
+    protected abstract void configHandlerThreadPool();//钩子方法
     protected List<Future<Integer>> submitHandlerList(List<? extends UnitAsyncTask> handlerList) {
         List<Future<Integer>> dealResultList = new ArrayList<>();
         try {

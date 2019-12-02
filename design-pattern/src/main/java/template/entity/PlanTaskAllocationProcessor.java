@@ -1,7 +1,6 @@
 package template.entity;
 
-import template.AbstractTaskAllocationProcessor;
-import template.entity.TaskDTO;
+import template.AbstractTaskAllocationListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +8,11 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class PlanTaskAllocationProcessor extends AbstractTaskAllocationProcessor {
+public class PlanTaskAllocationProcessor extends AbstractTaskAllocationListener {
 
     public ThreadPoolExecutor threadPoolExecutor;
 
+    public int taskPageSize;
     /*
     * 特定类型的TaskDTO，扩展性好
     * */
@@ -26,13 +26,33 @@ public class PlanTaskAllocationProcessor extends AbstractTaskAllocationProcessor
     }
     @Override
     public void configHandlerThreadPool() {
-        //子类定义线程池，属性是绑定类型的，而方法是绑定对象的，这里需要用到super
-        super.threadPoolExecutor = new ThreadPoolExecutor(2, 2, 60L, TimeUnit.SECONDS,
-                new LinkedBlockingQueue<Runnable>());
+
+    }
+
+
+    @Override
+    public void init(ThreadPoolExecutor _threadPoolExecutor, int _taskPageSize) {
+        super.init(_threadPoolExecutor, _taskPageSize);
     }
 
     @Override
     protected boolean isBlockedGetResult() {
         return Boolean.TRUE;
+    }
+
+    public ThreadPoolExecutor getThreadPoolExecutor() {
+        return threadPoolExecutor;
+    }
+
+    public void setThreadPoolExecutor(ThreadPoolExecutor threadPoolExecutor) {
+        this.threadPoolExecutor = threadPoolExecutor;
+    }
+
+    public int getTaskPageSize() {
+        return taskPageSize;
+    }
+
+    public void setTaskPageSize(int taskPageSize) {
+        this.taskPageSize = taskPageSize;
     }
 }
