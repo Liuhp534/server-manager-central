@@ -37,7 +37,7 @@ public class ApplicationMain {
     * */
     private static void fun4() {
         AopBusiness aopBusiness = applicationContextAop.getBean(AopBusiness.class);
-        int result = aopBusiness.calculate(1, 0);
+        int result = aopBusiness.calculate(1, 1);
     }
 
     /*
