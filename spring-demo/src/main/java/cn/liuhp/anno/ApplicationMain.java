@@ -1,7 +1,9 @@
 package cn.liuhp.anno;
 
+import cn.liuhp.anno.aop.AopBusiness;
 import cn.liuhp.anno.bean.Food;
 import cn.liuhp.anno.bean.Person;
+import cn.liuhp.anno.config.AopConfig;
 import cn.liuhp.anno.config.BeanConfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -11,12 +13,31 @@ import java.util.Arrays;
 
 public class ApplicationMain {
 
-    private static final ApplicationContext applicationContext
-            = new AnnotationConfigApplicationContext(BeanConfig.class);
+    private static final ApplicationContext applicationContext;
+
+    private static final ApplicationContext applicationContextAop;
+
+    static {
+        applicationContext = null;
+        //applicationContext = new AnnotationConfigApplicationContext(BeanConfig.class);
+        //applicationContextAop = null;
+        applicationContextAop = new AnnotationConfigApplicationContext(AopConfig.class);
+    }
+
+
 
     public static void main(String[] args) {
         //fun1();
         //fun2();
+        fun4();
+    }
+
+    /*
+    * aop
+    * */
+    private static void fun4() {
+        AopBusiness aopBusiness = applicationContextAop.getBean(AopBusiness.class);
+        int result = aopBusiness.calculate(1, 0);
     }
 
     /*
