@@ -1,5 +1,7 @@
 package cn.liuhp.jvm;
 
+import sun.misc.VM;
+
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.List;
 public class DirectBufferOom {
 
     public static void main(String[] args) {
+        System.out.println(VM.maxDirectMemory() / 1024/1024 + "MB");
         final int _1M = 1024 * 1024;
         List<ByteBuffer> buffers = new ArrayList<>();
         int count = 1;

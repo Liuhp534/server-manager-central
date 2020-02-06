@@ -22,6 +22,7 @@ public class StackRecursion {
             objs.add("导致程序的异常退出");
         }
         m2(objs);
+        m1();
     }
 
     private static void m2(List<String> objs) {
@@ -43,10 +44,10 @@ public class StackRecursion {
 
     public void stackLevel() {
         //String buf = "";
-        String buf1 = "";
+        /*String buf1 = "";
         String buf2 = "";
         String buf3 = "";
-        String buf4 = "";
+        String buf4 = "";*/
         level++;
         stackLevel();
     }

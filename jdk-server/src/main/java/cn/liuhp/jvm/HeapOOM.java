@@ -14,6 +14,11 @@ public class HeapOOM {
     }
 
     public static void main(String[] args) {
+        try {
+            Thread.sleep(Integer.MAX_VALUE);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         List<OOMObject> list = new ArrayList<OOMObject>();
 
         while (true) {
