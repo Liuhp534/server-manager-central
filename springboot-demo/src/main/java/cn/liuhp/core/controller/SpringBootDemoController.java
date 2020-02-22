@@ -1,17 +1,15 @@
 package cn.liuhp.core.controller;
 
 import cn.eventbus.EventBusCenter;
-import cn.eventbus.event.BaseEvent;
 import cn.eventbus.event.DogEvent;
 import cn.eventbus.event.PersonEvent;
-import cn.liuhp.base.config.ConfigTest;
+import cn.liuhp.base.config.ConfigurationPropertiesTest;
 import cn.liuhp.base.config.ConstantConfig;
 import cn.liuhp.core.service.EmailService;
 import cn.liuhp.utils.SessionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,7 +35,7 @@ public class SpringBootDemoController {
     private EmailService emailService;
 
     @Autowired
-    private ConfigTest configTest;
+    private ConfigurationPropertiesTest configurationPropertiesTest;
 
 
     @RequestMapping(path = "springBootDemo")
@@ -68,7 +66,7 @@ public class SpringBootDemoController {
     @ResponseBody
     public String springConfig() {
         logger.info("springConfig调用。。。config.Max_Value={}", ConstantConfig.Max_Value);
-        return configTest.toString();
+        return configurationPropertiesTest.toString();
     }
 
     @RequestMapping(path = "sendEmail")

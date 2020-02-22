@@ -1,18 +1,17 @@
 package cn;
 
-import cn.liuhp.base.config.ConfigTest;
-import org.apache.log4j.LogManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.ImportResource;
 
 /**
  * @description: 启动类
  * @author: liuhp534
  * @create: 2019-08-17 15:51
  */
+@ImportResource({"classpath:beans.xml"})//导入Spring的配置文件，让配置文件里面的内容生效，需标注在一个配置类上
 @SpringBootApplication
 public class SpringBootDemoApplication {
 

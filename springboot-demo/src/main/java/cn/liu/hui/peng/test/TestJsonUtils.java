@@ -16,8 +16,8 @@ public class TestJsonUtils {
 
     private static void m1() {
         Person person = new Person();
-        person.setName("jeff");
-        person.setAge(100);
+        //person.setName("jeff");
+        //person.setAge(100);
         //person.setBirthday(new Date());
         String jsonStr = JackJsonUtils.beanToJson(person);
         System.out.println(jsonStr);
