@@ -5,12 +5,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.PropertySource;
 
 /**
  * @description: 启动类
  * @author: liuhp534
  * @create: 2019-08-17 15:51
  */
+@PropertySource("classpath:logback.properties")//想引入logback的配置发现无效，只能放到application.properties
 @ImportResource({"classpath:beans.xml"})//导入Spring的配置文件，让配置文件里面的内容生效，需标注在一个配置类上
 @SpringBootApplication
 public class SpringBootDemoApplication {

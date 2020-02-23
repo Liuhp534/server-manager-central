@@ -1,4 +1,4 @@
-package cn.liu.hui.peng.test;
+package cn.liuhp.test;
 
 import cn.liuhp.domain.Person;
 import cn.liuhp.utils.JackJsonUtils;
@@ -16,9 +16,9 @@ public class TestJsonUtils {
 
     private static void m1() {
         Person person = new Person();
-        //person.setName("jeff");
-        //person.setAge(100);
-        //person.setBirthday(new Date());
+        person.setName("jeff");
+        person.setAge(100);
+        person.setBirthday(new Date());
         String jsonStr = JackJsonUtils.beanToJson(person);
         System.out.println(jsonStr);
 
