@@ -20,7 +20,7 @@ public class SpringBootDemoApplication {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        //System.setProperty("spring.config.location", "classpath:conf/env/application.properties");
+        System.setProperty("spring.config.location", "classpath:springConfigLocation.properties");//改变默认配置文件位置，有效
         SpringApplication.run(SpringBootDemoApplication.class, args);
         logger.info("服务启动完成，用时={}", System.currentTimeMillis() - start);
     }
