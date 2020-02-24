@@ -1,0 +1,4 @@
+#slf4j 日志的输出级别
+logging:
+  level:
+    cn.liuhp: debug
