@@ -1,4 +1,4 @@
-package cn.liuhp.wheel.util;
+package cn.liuhp.date;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,12 +16,6 @@ import cn.liuhp.string.CustomStringUtils;
  * @version      
  */
 public class CustomDateUtils {
-    
-    /**零时*/
-    public static final String time_zero = " 00:00:00";
-    
-    /**最晚时间*/
-    public static final String time_max = " 23:59:59";
     
     /**日期*/
     public static final String YYYY_MM_DD = "yyyy-MM-dd";
@@ -174,48 +168,6 @@ public class CustomDateUtils {
 	Date result = calendar.getTime();
 	return result;
     }
-    
-    /**
-     * 增加或者减去月数
-     * @param date
-     * @param days
-     * @return
-     *  
-     * @author	hz16092620 
-     * @date	2017年9月13日 下午7:11:01
-     * @version      
-     */ 
-    public static Date changeMonth(Date date, int months) {
-	Calendar calendar = Calendar.getInstance();
-	calendar.setTime(date);
-	calendar.add(Calendar.MONTH, months);
-	Date result = calendar.getTime();
-	return result;
-    }
-    
-    /**
-     * <p> 传入参数为字符串类型 <br> 2018-11-02 --> 2018-11-02 00:00:00 </p>
-     *
-     */
-    public static String toDayStart(String dateStr) {
-        if (CustomStringUtils.isEmpty(dateStr)) {
-            return dateStr;
-        }
-        return dateStr + time_zero;
-    }
-    
-    /**
-     * <p> 传入参数为字符串类型 <br> 2018-11-02 --> 2018-11-02 23:59:59 </p>
-     *
-     */
-    public static String toDayEnd(String dateStr) {
-        if (CustomStringUtils.isEmpty(dateStr)) {
-            return dateStr;
-        }
-        return dateStr + time_max;
-    }
-    
-    
     
     public static boolean isDateStr(String dateStr) {
 	// 使用正则表达式 测试 字符 符合 dddd-dd-dd 的格式(d表示数字)
