@@ -7,3 +7,10 @@ logging:
 #spring:
   resources:
     static-locations: classpath:/static/
+
+#servlet配置
+server:
+  port: 9093
+
+liuhp:
+  msg: helloAutoConfigurationAAA
