@@ -4,6 +4,7 @@ import cn.liuhp.domain.Account;
 import cn.liuhp.domain.User;
 import cn.liuhp.util.JackJsonUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -74,4 +75,16 @@ public class ParamController {
         return "success";
     }
 
+    /**
+     * @RequestBody 将json转实体
+     * 如果不写@RequestBody也能接受post请求转为实体，应该是其他的实现方式
+     * @return
+     */
+    @RequestMapping("/saveAccountJson")
+    @ResponseBody
+    public Account saveAccountJson(@RequestBody Account account){
+        System.out.println("执行了...");
+        System.out.println(JackJsonUtils.beanToJson(account));
+        return account;
+    }
 }

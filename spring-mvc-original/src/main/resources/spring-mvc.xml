@@ -38,4 +38,7 @@
     </bean>
     <!-- 开启Spring对MVC注解的支持 -->
     <mvc:annotation-driven conversion-service="conversionService"/>
+
+    <!--静态资源的映射-->
+    <mvc:resources location="/static/" mapping="/static/**"/>
 </beans>
