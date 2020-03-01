@@ -28,5 +28,14 @@
     <mvc:resources location="/images/" mapping="/images/**"/>
     <mvc:resources location="/js/" mapping="/js/**"/>-->
 
-
+    <!-- 注册自定义类型转换器 -->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="cn.liuhp.base.convert.StringToDateConverter"/>
+            </set>
+        </property>
+    </bean>
+    <!-- 开启Spring对MVC注解的支持 -->
+    <mvc:annotation-driven conversion-service="conversionService"/>
 </beans>

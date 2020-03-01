@@ -1,11 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>成功</title>
 </head>
 
 <body>
-首页jsp <a href="param.jsp">表单</a>
+ 成功
 </body>
 
 </html>
