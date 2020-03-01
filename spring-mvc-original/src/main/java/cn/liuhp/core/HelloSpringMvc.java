@@ -5,6 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.logging.Logger;
 
 /**
@@ -17,12 +21,14 @@ import java.util.logging.Logger;
 public class HelloSpringMvc {
 
     /*
-    * http://localhost:8080/hello/sayHello?sayHello=jeff
-    * */
-    @RequestMapping(value = "/sayHello", method = {RequestMethod.GET}, params = {"sayHello=jeff", "money>100"})
+     * http://localhost:8080/hello/sayHello?sayHello=jeff
+     * */
+    @RequestMapping(value = "/sayHello", method = {RequestMethod.GET}, params = {"sayHello=jeff"})
     @ResponseBody
     public String hello(String sayHello, Integer money) {
         return "hello original spring mvc to " + sayHello + " , money " + money;
     }
+
+
 
 }
