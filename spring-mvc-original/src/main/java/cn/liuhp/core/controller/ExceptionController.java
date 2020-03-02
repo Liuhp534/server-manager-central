@@ -1,4 +1,4 @@
-package cn.liuhp.core;
+package cn.liuhp.core.controller;
 
 import cn.liuhp.base.exception.CustomBusinessException;
 import org.springframework.stereotype.Controller;

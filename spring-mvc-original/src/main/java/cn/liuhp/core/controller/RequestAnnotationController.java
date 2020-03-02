@@ -1,4 +1,4 @@
-package cn.liuhp.core;
+package cn.liuhp.core.controller;
 
 import org.springframework.web.bind.annotation.*;
 

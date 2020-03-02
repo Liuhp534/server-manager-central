@@ -1,5 +1,7 @@
-package cn.liuhp.core;
+package cn.liuhp.core.controller;
 
+import cn.liuhp.core.service.HelloService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/hello")
 public class HelloSpringMvc {
 
+    @Autowired
+    private HelloService helloService;
 
     /*
      * http://localhost:8080/hello/sayHello?sayHello=jeff
@@ -24,5 +28,10 @@ public class HelloSpringMvc {
         return "hello original spring mvc to " + sayHello + " , money " + money;
     }
 
+    @RequestMapping(value = "/helloService")
+    @ResponseBody
+    public String helloService() {
+        return helloService.sayHello();
+    }
 
 }

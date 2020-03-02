@@ -1,4 +1,4 @@
-package cn.liuhp.core;
+package cn.liuhp.core.controller;
 
 import cn.liuhp.domain.Account;
 import cn.liuhp.domain.User;
