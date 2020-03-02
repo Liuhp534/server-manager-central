@@ -9,6 +9,7 @@
 <a href="param.jsp">表单</a><br>
 <a href="annotation.jsp">请求参数注解</a><br>
 <a href="exception.jsp">异常处理</a><br>
+<a href="interceptor.jsp">拦截器</a><br>
 </body>
 
 </html>

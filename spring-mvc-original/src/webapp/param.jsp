@@ -4,7 +4,7 @@
     <title>参数绑定</title>
 </head>
 <body style="text-align: center">
-
+    <%System.out.println("参数绑定");%>
     <%--请求参数绑定--%>
     <a href="param/testParam?username=hehe&password=123">请求参数绑定</a>
 

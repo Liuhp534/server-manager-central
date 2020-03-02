@@ -45,4 +45,17 @@
     <!--自定义异常处理器-->
     <bean id="customExceptionResolver" class="cn.liuhp.base.exception.CustomExceptionResolver" />
 
+    <!--拦截器设置-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/interceptor/**"/><!--/** 拦截所有的请求-->
+            <mvc:exclude-mapping path="/hello/**" /><!--不拦截的请求-->
+            <bean class="cn.liuhp.base.interceptor.CustomInterceptor"></bean><!--拦截器-->
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/interceptor/**"/><!--/** 拦截所有的请求-->
+            <mvc:exclude-mapping path="/hello/**" /><!--不拦截的请求-->
+            <bean class="cn.liuhp.base.interceptor.CustomInterceptor2"></bean><!--拦截器-->
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

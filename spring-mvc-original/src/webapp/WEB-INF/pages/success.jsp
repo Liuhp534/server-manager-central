@@ -6,6 +6,8 @@
 
 <body>
  成功
+
+<%System.out.println("我成功了");%>
 </body>
 
 </html>
