@@ -41,4 +41,8 @@
 
     <!--静态资源的映射-->
     <mvc:resources location="/static/" mapping="/static/**"/>
+
+    <!--自定义异常处理器-->
+    <bean id="customExceptionResolver" class="cn.liuhp.base.exception.CustomExceptionResolver" />
+
 </beans>

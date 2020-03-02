@@ -5,12 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.logging.Logger;
-
 /**
  * @description:
  * @author: liuhp534
@@ -20,6 +14,7 @@ import java.util.logging.Logger;
 @RequestMapping("/hello")
 public class HelloSpringMvc {
 
+
     /*
      * http://localhost:8080/hello/sayHello?sayHello=jeff
      * */
@@ -28,7 +23,6 @@ public class HelloSpringMvc {
     public String hello(String sayHello, Integer money) {
         return "hello original spring mvc to " + sayHello + " , money " + money;
     }
-
 
 
 }
