@@ -16,10 +16,10 @@ public class CustomInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-        System.out.println("CustomInterceptor.preHandle, contextPath=" + httpServletRequest.getContextPath());
+        System.out.println("CustomInterceptor.preHandle, requestURL=" + httpServletRequest.getRequestURL());
         //httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/param.jsp");//需要/不然会加上controller路径的
         //httpServletRequest.getRequestDispatcher("/WEB-INF/param.jsp").forward(httpServletRequest, httpServletResponse);//"/"路径不能丢
-        return false;
+        return true;
     }
 
     @Override

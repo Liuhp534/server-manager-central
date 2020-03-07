@@ -2,6 +2,7 @@ package cn.liuhp.base.interceptor;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,12 +12,12 @@ import javax.servlet.http.HttpServletResponse;
  * @author: liuhp534
  * @create: 2020-03-02 10:50
  */
-public class CustomInterceptor2 implements HandlerInterceptor {
+public class CustomInterceptor2 extends HandlerInterceptorAdapter {
 
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-        System.out.println("CustomInterceptor2.preHandle, contextPath=" + httpServletRequest.getContextPath());
+        System.out.println("CustomInterceptor2.preHandle, requestURL=" + httpServletRequest.getRequestURL());
         //httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/param.jsp");//需要/不然会加上controller路径的
         //httpServletRequest.getRequestDispatcher("/WEB-INF/param.jsp").forward(httpServletRequest, httpServletResponse);//"/"路径不能丢
         return true;
@@ -31,5 +32,10 @@ public class CustomInterceptor2 implements HandlerInterceptor {
     @Override
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
         System.out.println("CustomInterceptor2.afterCompletion");
+    }
+
+    @Override
+    public void afterConcurrentHandlingStarted(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        System.out.println("CustomInterceptor2.afterConcurrentHandlingStarted");
     }
 }
