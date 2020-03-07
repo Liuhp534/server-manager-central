@@ -1,5 +1,6 @@
 package cn.liuhp.base.exception;
 
+import org.springframework.core.Ordered;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author: liuhp534
  * @create: 2020-03-02 09:56
  */
-public class CustomExceptionResolver implements HandlerExceptionResolver {
+public class CustomExceptionResolver implements HandlerExceptionResolver, Ordered {
 
 
 
@@ -19,7 +20,7 @@ public class CustomExceptionResolver implements HandlerExceptionResolver {
     public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) {
 
         //如果是异步的请求，直接response返回
-
+        System.out.println(httpServletRequest.getRequestURL());
         //非一异步的请求
         ModelAndView modelAndView = new ModelAndView();
         if (e instanceof CustomBusinessException) {
@@ -31,5 +32,10 @@ public class CustomExceptionResolver implements HandlerExceptionResolver {
             modelAndView.setViewName("common/400");
         }
         return modelAndView;
+    }
+
+    @Override
+    public int getOrder() {
+        return Ordered.HIGHEST_PRECEDENCE;
     }
 }
