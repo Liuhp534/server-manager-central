@@ -16,6 +16,8 @@ public class CglibProxy {
         enhancer.setCallback(new RequestCallback());
 
         Requestable requestable = (Requestable) enhancer.create();
+        System.out.println(new Requestable().getClass().toString());
+        System.out.println(requestable.getClass());
         requestable.request();
     }
 }

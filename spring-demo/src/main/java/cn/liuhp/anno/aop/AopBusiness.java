@@ -19,9 +19,9 @@ public class AopBusiness {
     @Autowired
     private ApplicationContext applicationContext;
 
-    public int calculate(int x, int y) {
+    public Integer calculate(int x, int y) {
         System.out.println("执行计算, 参数 x=" + x + " y=" + y);
-        System.out.println("applicationContext=" + applicationContext);
+        //System.out.println("applicationContext=" + applicationContext);
         return x / y;
     }
 }
