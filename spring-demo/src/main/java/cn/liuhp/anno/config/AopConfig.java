@@ -16,10 +16,10 @@ public class AopConfig {
         return new AopAspect();
     }
 
-    @Bean
+   /* @Bean
     public LogAopAspect logAopAspect() {
         return new LogAopAspect();
-    }
+    }*/
 
     @Bean
     public AopBusiness aopBusiness() {

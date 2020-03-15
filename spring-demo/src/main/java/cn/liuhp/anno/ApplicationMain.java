@@ -37,10 +37,11 @@ public class ApplicationMain {
     * */
     private static void fun4() {
         AopBusiness aopBusiness = applicationContextAop.getBean(AopBusiness.class);
-        /*System.out.println(aopBusiness.toString());
+        System.out.println(aopBusiness.toString());
         System.out.println(aopBusiness.getClass().toString());
-        System.out.println(aopBusiness.getClass().getClassLoader());*/
-        Integer result = aopBusiness.calculate(1, 0);
+        System.out.println(aopBusiness.getClass().getClassLoader());
+        Integer result1 = aopBusiness.add(1, 1);
+        Integer result = aopBusiness.calculate(1, 1);
         System.out.println(result);
     }
 

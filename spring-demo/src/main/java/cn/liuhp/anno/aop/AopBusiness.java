@@ -24,4 +24,8 @@ public class AopBusiness {
         //System.out.println("applicationContext=" + applicationContext);
         return x / y;
     }
+
+    public Integer add(int x, int y) {
+        return x + y;
+    }
 }

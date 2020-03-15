@@ -12,7 +12,7 @@ import org.aspectj.lang.annotation.*;
 @Aspect
 public class AopAspect {
 
-    @Pointcut("execution(public Integer cn.liuhp.anno.aop.AopBusiness.*(..))")
+    @Pointcut("execution(public Integer cn.liuhp.anno.aop.AopBusiness.calculate(..))")
     public void pointCut() {
 
     }
