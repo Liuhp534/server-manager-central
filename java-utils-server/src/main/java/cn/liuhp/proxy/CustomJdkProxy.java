@@ -2,21 +2,23 @@ package cn.liuhp.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 /**
  * @author hz16092620
  * @date 2018年4月3日 下午5:50:14
  */
-public class HelloServiceProxy implements InvocationHandler {
+public class CustomJdkProxy implements InvocationHandler {
 
     private Object proxy;
 
-    HelloServiceProxy() {
-        super();
+    CustomJdkProxy(Object proxy) {
+        this.proxy = proxy;
     }
 
-    HelloServiceProxy(Object proxy) {
-        this.proxy = proxy;
+    public Object getInstance(Class clazz) {
+        Object object = Proxy.newProxyInstance(clazz.getClassLoader(), clazz.getInterfaces(), this);
+        return object;
     }
 
     @Override
