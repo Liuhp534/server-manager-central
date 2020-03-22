@@ -7,7 +7,7 @@ package single;
  */
 public class SingleLazyInstance {
 
-    private static SingleLazyInstance singleInstance = null;
+    private static volatile SingleLazyInstance singleInstance = null;
 
     /*构造函数私有化*/
     private SingleLazyInstance() {

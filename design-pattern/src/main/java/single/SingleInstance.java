@@ -7,7 +7,7 @@ package single;
  */
 public class SingleInstance {
 
-    private static  SingleInstance singleInstance = new SingleInstance();//final思考一下可以用不
+    private static  final SingleInstance singleInstance = new SingleInstance();//final思考一下可以用不
 
     /*构造函数私有化*/
     private SingleInstance() {
@@ -16,5 +16,18 @@ public class SingleInstance {
 
     public static SingleInstance getInstance() {
         return singleInstance;
+    }
+}
+
+class SingleInstanceTwo {
+
+    private SingleInstanceTwo() {
+
+    }
+
+    private static  final SingleInstanceTwo singleInstance;
+
+    static {
+        singleInstance = new SingleInstanceTwo();
     }
 }
