@@ -18,15 +18,15 @@ import com.rabbitmq.client.ConnectionFactory;
  */
 public class RabbitConnection {
 
-    private final static String HOST = "10.145.1.200";//192.168.10.59/10.160.2.62/p版10.145.1.200
+    public final static String HOST = "172.20.0.130";//192.168.10.59/10.160.2.62/p版10.145.1.200
 
-    private final static String VIRTUALHOST = "/";
+    public final static String VIRTUALHOST = "/";
 
-    private final static int PORT = 5672;
+    public final static int PORT = 5672;
 
-    private final static String USERNAME = "it";
+    public final static String USERNAME = "it";
 
-    private final static String PASSWORD = "its123";
+    public final static String PASSWORD = "its123";
 
 
 	public static void main(String[] args) {
