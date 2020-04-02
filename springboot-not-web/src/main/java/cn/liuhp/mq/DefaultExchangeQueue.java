@@ -10,6 +10,8 @@ import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageListener;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -25,17 +27,12 @@ import java.util.concurrent.CountDownLatch;
  * @author hz16092620
  * @date 2018年9月16日 上午10:08:23
  */
-@Component
+@Configuration
 public class DefaultExchangeQueue {
 
     private static final Logger logger = LoggerFactory.getLogger(DefaultExchangeQueue.class);
 
     public static void main(String[] args) {
-        //consumerMessage();
-        server();
-    }
-
-    static {
         //consumerMessage();
         //server();
     }
@@ -43,7 +40,8 @@ public class DefaultExchangeQueue {
     /*
     * 模拟客户端消费消息
     * */
-    private static void server() {
+    @Bean
+    public SimpleMessageListenerContainer simpleMessageListenerContainer() {
         logger.info("开启mq服务端消费");
         CountDownLatch latch = new CountDownLatch(1);
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
@@ -61,86 +59,13 @@ public class DefaultExchangeQueue {
             @Override
             public void onMessage(Message message) {
                 System.out.println("服务端收到消息=" + message.getBody());
-                //latch.countDown();
             }
         });
-        container.start();
-        /*try {
-            latch.await();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
+        return container;
+        //container.start();//main方法执行需要手动启动，给spring的话通过Lifecycle接口管理
     }
 
-    /**
-     * 服务端消费消息
-     */
-    public static void consumerMessage() {
-        logger.info("开启mq服务端消费");
-        Connection conn = RabbitConnection.createConnection();
-        Channel channel = null;
-        try {
-            String queneName = "rpc_liuhp_quene";
-            channel = conn.createChannel();
-            channel.queueDeclare(queneName, true, true, false, null);//这边不能是 排外的队列???
-            //operation not permitted on the default exchange 下面这个操作会报错。
-            //channel.queueBind(queneName, "", "");//绑定默认的exchange
 
-            //消费消息，推模式
-            Channel consumerChannel = channel;
-            channel.basicQos(100);//最多消费消息个数
-            Consumer consumer = new DefaultConsumer(channel) {
-                @Override
-                public void handleDelivery(String consumerTag, Envelope envelope, BasicProperties properties, byte[] body) throws IOException {
-                    /*System.out.println(consumerTag);
-                    System.out.println(envelope.getDeliveryTag());
-                    System.out.println(envelope.getExchange());
-                    System.out.println(envelope.getRoutingKey());*/
-                    System.out.println("回复队列=" + properties.getReplyTo());
-                    StringBuilder sb = new StringBuilder();
-                    for (byte b : body) {
-                        sb.append((char) b);
-                    }
-                    System.out.println("消费者消费消息，收到数据: " + sb.toString());
-                    BasicProperties props = new BasicProperties().builder().correlationId(properties.getCorrelationId()).build();
-                    //consumerChannel.basicAck(envelope.getDeliveryTag(), false);//这个可以确认是否处理消息
-                    consumerChannel.basicPublish("", properties.getReplyTo(), props, "result".getBytes());
-                }
-            };
-            Thread serverThread = new Thread(() -> {
-                try {
-                    while (true) {
-                        consumerChannel.basicConsume(queneName, true, consumer);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    System.out.println("服务端处理消息异常");
-                }
-            });
-            serverThread.start();
-            serverThread.join();
-            System.out.println("服务端退出");
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            /*if (null != channel) {
-                try {
-                    System.out.println("channel关闭");
-                    channel.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            if (null != conn) {
-                try {
-                    conn.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }*/
-            System.out.println("服务端退出");
-        }
-    }
 
 }
  
