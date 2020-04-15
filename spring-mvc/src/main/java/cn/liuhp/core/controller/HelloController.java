@@ -1,6 +1,6 @@
 package cn.liuhp.core.controller;
 
-import com.liuhp.core.LiuhpSpeaker;
+//import com.liuhp.core.LiuhpSpeaker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +19,9 @@ public class HelloController {
 
     private static final Logger logger = LoggerFactory.getLogger(HelloController.class);
 
-    @Autowired
+   /* @Autowired
     private LiuhpSpeaker liuhpSpeaker;
-
+*/
     @RequestMapping("sayHello")
     @ResponseBody
     public String hello() {
@@ -29,7 +29,7 @@ public class HelloController {
         logger.debug("我是debug");
         logger.info("我是info");
         logger.error("我是error");
-        return liuhpSpeaker.speak();
+        return "sayHello";
     }
 
 }

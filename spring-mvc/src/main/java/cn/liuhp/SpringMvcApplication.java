@@ -1,10 +1,11 @@
 package cn.liuhp;
 
-import com.liuhp.annotation.EnableLiuhp;
+//import com.liuhp.annotation.EnableLiuhp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,6 +17,7 @@ import java.util.Map;
  */
 @SpringBootApplication
 //@EnableLiuhp
+@ServletComponentScan
 public class SpringMvcApplication {
 
     private static final Logger logger = LoggerFactory.getLogger(SpringMvcApplication.class);
