@@ -15,8 +15,8 @@ public class StreamTest {
         //fun2();
         //fun3();
         //fun4();
-        //fun5();
-       fun6();
+        fun5();
+        //fun6();
     }
 
 
@@ -98,7 +98,7 @@ public class StreamTest {
         long end = System.currentTimeMillis();
         System.out.println("用时=" + (end - start));
         start = System.currentTimeMillis();
-        list.stream().parallel().forEach(str -> {
+        list.parallelStream().forEach(str -> {
             System.out.println(str);
             try {
                 Thread.sleep(500);
