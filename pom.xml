@@ -16,6 +16,7 @@
         <module>spring-mvc</module>
         <module>springboot-demo</module>
         <module>java-base-one</module>
+        <module>springboot-not-web</module>
     </modules>
     <packaging>pom</packaging>
     <name>server-manager-central</name>
