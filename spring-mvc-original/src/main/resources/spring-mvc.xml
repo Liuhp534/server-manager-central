@@ -17,6 +17,8 @@
     <!-- 开启SpringMVC框架注解的支持 -->
     <mvc:annotation-driven />
 
+    <mvc:default-servlet-handler/>
+
     <!-- 视图解析器对象 -->
     <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>

@@ -1,5 +1,6 @@
 package cn.liuhp.bean;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
@@ -12,6 +13,8 @@ import java.io.IOException;
 @WebServlet(name = "myServletName",urlPatterns={"/myServlet"},loadOnStartup=2)
 public class MyServlet extends HttpServlet {
 
+    @Autowired
+    private TestPrototype testPrototype;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

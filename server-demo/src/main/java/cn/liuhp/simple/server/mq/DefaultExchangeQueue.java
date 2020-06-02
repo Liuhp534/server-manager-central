@@ -97,6 +97,7 @@ public class DefaultExchangeQueue {
             Thread serverThread = new Thread(() -> {
                 try {
                     while (true) {
+                        Thread.sleep(1000);
                         consumerChannel.basicConsume(queneName, true, consumer);
                     }
                 } catch (Exception e) {

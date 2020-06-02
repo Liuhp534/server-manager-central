@@ -15,7 +15,10 @@
         <module>design-pattern</module>
         <module>spring-mvc</module>
         <module>springboot-demo</module>
+        <module>spring-mvc-original</module>
         <module>java-base-one</module>
+        <module>springboot-not-web</module>
+        <module>springboot-quarts</module>
         <module>springboot-not-web</module>
     </modules>
     <packaging>pom</packaging>

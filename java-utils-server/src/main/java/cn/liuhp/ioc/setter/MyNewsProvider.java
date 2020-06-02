@@ -24,7 +24,7 @@ public class MyNewsProvider implements CommonNewsProvider {
 	MyNewsProvider my = new MyNewsProvider();
 	//ioc接口注入，根据注入的不同
 	//my.injectNewsListener(new DowJonesNewsListener());
-	my.injectNewsListener(new PeopleDayNewsListener());
+	//my.injectNewsListener(new PeopleDayNewsListener());
 	//获取新闻
 	my.getAndPersistNews();
     }

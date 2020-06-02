@@ -27,6 +27,8 @@ public class AopConfig {
         return new AopBusiness();
     }
 
+
+
     @Bean
     public CycleA cycleA() {
         return new CycleA();
@@ -43,16 +45,6 @@ class CycleA {
     private CycleB cycleB;
 
     public CycleA () {
-
-    }
-}
-
-class CycleB {
-
-    @Autowired
-    private CycleA cycleA;
-
-    public CycleB () {
 
     }
 }
