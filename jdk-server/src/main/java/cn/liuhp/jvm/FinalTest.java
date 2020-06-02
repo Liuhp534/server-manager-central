@@ -12,6 +12,7 @@ public class FinalTest {
 
     private final TestFFF testFFF = new TestFFF("常量对象");
 
+    private static final TestFFF testFFF3 = new TestFFF("静态对象2");//这个是常量
     static {
         System.out.println("FinalTest静态块");
     }
@@ -19,7 +20,7 @@ public class FinalTest {
     static {
         System.out.println("FinalTest静态块2");
     }
-    private static final TestFFF testFFF3 = new TestFFF("静态对象2");//这个是常量
+
     static {
         System.out.println("FinalTest静态块3");
     }

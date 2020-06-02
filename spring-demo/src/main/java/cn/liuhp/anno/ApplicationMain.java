@@ -43,6 +43,7 @@ public class ApplicationMain {
         Integer result1 = aopBusiness.add(1, 1);
         Integer result = aopBusiness.calculate(1, 1);
         System.out.println(result);
+        System.out.println(aopBusiness instanceof AopBusiness);
     }
 
     /*

@@ -3,6 +3,7 @@ package cn.liuhp.anno.config;
 import cn.liuhp.anno.aop.AopAspect;
 import cn.liuhp.anno.aop.AopBusiness;
 import cn.liuhp.anno.aop.LogAopAspect;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -25,4 +26,34 @@ public class AopConfig {
     public AopBusiness aopBusiness() {
         return new AopBusiness();
     }
+
+    @Bean
+    public CycleA cycleA() {
+        return new CycleA();
+    }
+
+    @Bean
+    public CycleB cycleB() {
+        return new CycleB();
+    }
 }
+class CycleA {
+
+    @Autowired
+    private CycleB cycleB;
+
+    public CycleA () {
+
+    }
+}
+
+class CycleB {
+
+    @Autowired
+    private CycleA cycleA;
+
+    public CycleB () {
+
+    }
+}
+

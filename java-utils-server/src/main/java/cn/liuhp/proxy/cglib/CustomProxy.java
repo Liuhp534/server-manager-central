@@ -36,9 +36,13 @@ public class CustomProxy implements MethodInterceptor {
     }
 
     @Override
-    public Object intercept(Object arg0, Method arg1, Object[] arg2, MethodProxy arg3) throws Throwable {
+    public Object intercept(Object object, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
+        //object是代理后的子类  ，method是调用方法 ，args是方法入参 ， proxy是MethodProxy代理对象
+        /*System.out.println(object.getClass());
+        System.out.println(object.toString());*/
         System.out.println("before");
-        Object result = arg3.invokeSuper(arg0, arg2);
+        Object result = methodProxy.invokeSuper(object, args);
+        //Object result = method.invoke(object, args);
         System.out.println("after");
         return result;
     }

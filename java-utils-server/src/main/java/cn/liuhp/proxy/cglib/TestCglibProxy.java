@@ -17,7 +17,7 @@ public class TestCglibProxy {
     	Requestable requestable = (Requestable) new CustomProxy().getInstance(Requestable.class);
 
 		requestable.request();
-
+		System.out.println(requestable instanceof Requestable);
 		System.out.println(requestable.getClass());
 	}
 
